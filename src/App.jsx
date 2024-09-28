@@ -11,7 +11,10 @@ function App() {
 
   function clicked()
 {
-
+  if (EnteredValue==='' )
+  {
+    return ;
+  }
     setTodos([...todos,EnteredValue]);
     setEnteredValue('');
 
@@ -21,7 +24,7 @@ function App() {
     <>
     
     <CreateTodo  EnteredValue={EnteredValue} setEnteredValue={setEnteredValue}  clicked={clicked} ></CreateTodo>
-    <DisplayTodo todo={todos} setTodo={setTodos}></DisplayTodo>
+    <DisplayTodo todos={todos} setTodos={setTodos}></DisplayTodo>
     
     </>
   )

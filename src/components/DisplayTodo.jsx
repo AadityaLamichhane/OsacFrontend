@@ -1,18 +1,39 @@
+import React from 'react'
+function DisplayTodo({todos,setTodos}){
 
-function DisplayTodo({todo}){
+  const handleDelete = (index)=>
+  {
+   const newtodo = todos.filter(function(todo,key)
+      {
+        return index!== key;
+      })
+        
+          setTodos(newtodo);
+  
+  }
     return (
-          <> 
+          
             <ul>
             {
-                todo.map((element , index)=>(      //using the () instead of {} help to get the implicit return  can still use map()=>{return()}
-                
-                    <li key = {index}> 
+              todos.map((element,index)=>(      
+              
+                <li key = {index}> 
                         {element} 
-                     </li>
-                ))
-              }
+                < Delete onDelete= {()=>{ handleDelete(index)}}/> 
+                 
+                </li>
+              ))}
             </ul>    
-         </>
-    )
+         
+    );
   }
-  export default DisplayTodo
+
+    function Delete({onDelete})
+    {
+      return (
+        <button onClick = {onDelete}>Delete</button>
+      );
+    }
+   
+  
+  export default DisplayTodo;
